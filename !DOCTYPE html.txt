@@ -1,0 +1,523 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kondepudi Sion Rani | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --royal:#1a3a8f;
+    --royal-dark:#12296b;
+    --royal-light:#e8edfb;
+    --text:#1f2937;
+    --muted:#6b7280;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+  html{scroll-behavior:smooth}
+  body{color:var(--text);background:#fff}
+
+  /* ---------- NAVBAR ---------- */
+  nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,.95);
+      backdrop-filter:blur(10px);z-index:100;box-shadow:0 2px 15px rgba(0,0,0,.06)}
+  .nav-inner{max-width:1100px;margin:auto;display:flex;justify-content:space-between;
+             align-items:center;padding:16px 24px}
+  .logo{font-size:1.35rem;font-weight:700;color:var(--royal)}
+  .logo span{color:var(--royal-dark)}
+  .nav-links{display:flex;gap:20px;list-style:none}
+  .nav-links a{text-decoration:none;color:var(--text);font-weight:500;font-size:.9rem;transition:.3s}
+  .nav-links a:hover{color:var(--royal)}
+  .menu-btn{display:none;font-size:1.5rem;background:none;border:none;color:var(--royal);cursor:pointer}
+
+  /* ---------- HERO — animated blob + floating photo ---------- */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+        align-items:center;text-align:center;padding:120px 24px 60px;
+        position:relative;overflow:hidden}
+  .blob{position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);
+        width:640px;height:640px;background:linear-gradient(180deg,#dbe4fa 0%,#e8edfb 100%);
+        z-index:0;
+        border-radius:58% 42% 55% 45% / 52% 55% 45% 48%;
+        animation:blobMorph 10s ease-in-out infinite}
+  @keyframes blobMorph{
+    0%,100%{border-radius:58% 42% 55% 45% / 52% 55% 45% 48%;transform:translate(-50%,-50%) scale(1)}
+    25%{border-radius:45% 55% 48% 52% / 58% 45% 55% 42%;transform:translate(-50%,-50%) scale(1.05)}
+    50%{border-radius:52% 48% 42% 58% / 45% 52% 48% 55%;transform:translate(-50%,-50%) scale(.97)}
+    75%{border-radius:48% 52% 58% 42% / 55% 48% 52% 45%;transform:translate(-50%,-50%) scale(1.03)}
+  }
+  .hero-content{position:relative;z-index:2}
+  .hero h1{font-size:3.2rem;font-weight:800;color:var(--text)}
+  .hero h2.sub{font-size:1.7rem;font-weight:600;color:var(--royal);margin-top:8px}
+  .hero p.tagline{margin-top:14px;font-size:1.1rem;color:var(--muted);max-width:600px}
+  .photo-wrap{position:relative;z-index:2;width:290px;height:290px;border-radius:50%;
+        margin:44px auto 0;
+        animation:floatPhoto 5s ease-in-out infinite}
+  .photo-wrap img{width:100%;height:100%;border-radius:50%;object-fit:cover;
+        object-position:50% 30%;border:8px solid #fff;
+        box-shadow:0 20px 50px rgba(26,58,143,.30)}
+  @keyframes floatPhoto{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-14px)}
+  }
+  .btn{margin-top:40px;display:inline-block;background:linear-gradient(135deg,#4a7bf7,var(--royal));
+        color:#fff;padding:15px 44px;border-radius:40px;text-decoration:none;font-weight:600;
+        font-size:1.05rem;box-shadow:0 10px 30px rgba(74,123,247,.40);transition:.3s}
+  .btn:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(74,123,247,.55)}
+
+  /* ---------- FLOATING SOCIAL ICONS ---------- */
+  .side-social{position:fixed;right:26px;top:50%;transform:translateY(-50%);
+        display:flex;flex-direction:column;gap:16px;z-index:90}
+  .side-social a{width:52px;height:52px;background:#fff;border-radius:50%;
+        display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+        text-decoration:none;box-shadow:0 6px 20px rgba(26,58,143,.18);
+        animation:floatIcon 3s ease-in-out infinite;transition:.3s}
+  .side-social a:nth-child(2){animation-delay:.4s}
+  .side-social a:nth-child(3){animation-delay:.8s}
+  .side-social a:hover{background:var(--royal);transform:scale(1.12)}
+  @keyframes floatIcon{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:90px 24px;max-width:1100px;margin:auto}
+  .section-title{text-align:center;font-size:2rem;font-weight:700;margin-bottom:8px}
+  .section-title span{color:var(--royal)}
+  .section-sub{text-align:center;color:var(--muted);margin-bottom:50px}
+
+  /* ---------- ABOUT ---------- */
+  .about-card{background:var(--royal-light);border-radius:20px;padding:44px;line-height:1.9;
+        font-size:1.05rem;text-align:center;max-width:880px;margin:auto}
+
+  /* ---------- EDUCATION ---------- */
+  .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px}
+  .edu-card{background:#fff;border-radius:18px;padding:30px;
+        box-shadow:0 8px 30px rgba(26,58,143,.10);border-left:5px solid var(--royal);
+        transition:.3s}
+  .edu-card:hover{transform:translateY(-4px)}
+  .edu-card h4{color:var(--royal);font-size:1.05rem;margin-bottom:6px}
+  .edu-card p{color:var(--muted);font-size:.92rem;line-height:1.7}
+  .edu-card .years{font-weight:600;color:var(--royal-dark);font-size:.9rem}
+  .edu-badge{display:inline-block;margin-top:10px;font-size:.8rem;font-weight:700;
+        color:#fff;background:linear-gradient(135deg,#4a7bf7,var(--royal));
+        padding:6px 16px;border-radius:20px}
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+  .skill-card{background:#fff;border-radius:18px;padding:32px;
+        box-shadow:0 8px 30px rgba(26,58,143,.10);transition:.3s}
+  .skill-card:hover{transform:translateY(-6px)}
+  .skill-card h3{display:flex;align-items:center;gap:12px;color:var(--royal);
+        font-size:1.15rem;margin-bottom:20px}
+  .skill-card h3 .icon{width:44px;height:44px;border-radius:12px;background:var(--royal-light);
+        display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+  .skill-card ul{list-style:none}
+  .skill-card li{padding:10px 14px;margin-bottom:8px;background:#f6f8ff;border-radius:10px;
+        font-size:.93rem;display:flex;align-items:center;gap:10px}
+  .skill-card li::before{content:"▹";color:var(--royal);font-weight:700}
+
+  /* ---------- EXPERIENCE ---------- */
+  .exp-card{background:#fff;border-radius:20px;padding:40px;
+        box-shadow:0 8px 30px rgba(26,58,143,.10);border-top:5px solid var(--royal);max-width:900px;margin:auto}
+  .exp-date{display:inline-flex;align-items:center;gap:8px;color:var(--royal);
+        font-weight:600;font-size:.9rem;background:var(--royal-light);
+        padding:6px 16px;border-radius:20px;margin-bottom:14px}
+  .exp-card h3{font-size:1.35rem;margin-bottom:4px}
+  .exp-card .company{color:var(--royal);font-weight:600;margin-bottom:20px}
+  .exp-card ul{list-style:none}
+  .exp-card li{padding:7px 0 7px 26px;position:relative;line-height:1.7;font-size:.95rem}
+  .exp-card li::before{content:"▹";position:absolute;left:0;color:var(--royal);font-weight:700}
+
+  /* ---------- PROJECTS ---------- */
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
+  .proj-card{background:#fff;border-radius:18px;padding:30px;
+        box-shadow:0 8px 30px rgba(26,58,143,.10);transition:.3s;
+        border-top:4px solid var(--royal);display:flex;flex-direction:column}
+  .proj-card:hover{transform:translateY(-6px)}
+  .proj-tag{display:inline-block;font-size:.75rem;font-weight:600;color:var(--royal);
+        background:var(--royal-light);padding:5px 14px;border-radius:20px;margin-bottom:12px;
+        align-self:flex-start}
+  .proj-card h4{font-size:1.1rem;margin-bottom:10px}
+  .proj-card p.desc{font-size:.92rem;color:#374151;line-height:1.7;margin-bottom:14px;flex:1}
+  .proj-skills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .proj-skills span{font-size:.75rem;color:var(--royal-dark);background:#f6f8ff;
+        border:1px solid var(--royal-light);padding:4px 12px;border-radius:20px}
+  .proj-link{color:var(--royal);font-weight:600;font-size:.9rem;text-decoration:none}
+  .proj-link:hover{text-decoration:underline}
+
+  /* ---------- CERTIFICATES ---------- */
+  .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
+  .cert-card{background:#fff;border-radius:18px;padding:28px;
+        box-shadow:0 8px 30px rgba(26,58,143,.10);transition:.3s;border-top:4px solid var(--royal)}
+  .cert-card:hover{transform:translateY(-6px)}
+  .cert-tag{display:inline-block;font-size:.75rem;font-weight:600;color:var(--royal);
+        background:var(--royal-light);padding:5px 14px;border-radius:20px;margin-bottom:12px}
+  .cert-card h4{font-size:1.05rem;margin-bottom:6px}
+  .cert-card .issuer{color:var(--muted);font-size:.9rem}
+  .cert-card .date{color:var(--muted);font-size:.85rem;margin:6px 0 14px}
+  .cert-card a{color:var(--royal);font-weight:600;font-size:.9rem;text-decoration:none}
+  .cert-card a:hover{text-decoration:underline}
+
+  /* ---------- GET IN TOUCH ---------- */
+  .git-box{background:linear-gradient(135deg,var(--royal),var(--royal-dark));color:#fff;
+        border-radius:22px;padding:56px 40px;text-align:center}
+  .git-box h2{font-size:2rem;margin-bottom:12px}
+  .git-box p{opacity:.9;margin-bottom:30px}
+  .git-items{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+  .git-items a{color:#fff;text-decoration:none;background:rgba(255,255,255,.15);
+        padding:12px 22px;border-radius:30px;font-size:.92rem;transition:.3s}
+  .git-items a:hover{background:rgba(255,255,255,.3)}
+
+  footer{text-align:center;padding:28px;color:var(--muted);font-size:.85rem}
+
+  @media(max-width:900px){
+    .nav-links{display:none;position:absolute;top:100%;left:0;width:100%;background:#fff;
+      flex-direction:column;padding:20px;gap:16px;box-shadow:0 10px 20px rgba(0,0,0,.08)}
+    .nav-links.open{display:flex}
+    .menu-btn{display:block}
+    .hero h1{font-size:2rem}
+    .hero h2.sub{font-size:1.3rem}
+    .blob{width:400px;height:400px}
+    .side-social{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Sion<span>Rani</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#contact">Get In Touch</a></li>
+    </ul>
+    <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<!-- FLOATING SOCIAL ICONS -->
+<div class="side-social">
+  <a href="https://github.com/SionRani" target="_blank" title="GitHub">🐙</a>
+  <a href="https://www.linkedin.com/in/sionrani" target="_blank" title="LinkedIn">💼</a>
+  <a href="mailto:kondepudisionrani@gmail.com" title="Email">✉️</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="blob"></div>
+  <div class="hero-content">
+    <h1>Hi, I'm Sion Rani</h1>
+    <h2 class="sub">Civil Engineer &amp; Data Science Enthusiast</h2>
+    <p class="tagline">Building expertise in construction planning, quality & analytics.</p>
+    <div class="photo-wrap">
+      <img src="https://z-cdn-media.chatglm.cn/files/64e7185d-4e13-4881-a0b5-c138c7ec51b7.jpeg?auth_key=1790007628-042024ec593144be8cdecc741974cd55-0-1876f3348d468c3b1dd3627b4dece0bd" alt="Kondepudi Sion Rani">
+    </div>
+    <a href="#" class="btn" download>Download CV</a>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-title">About <span>Me</span></h2>
+  <p class="section-sub">Get to know me better</p>
+  <div class="about-card">
+    I'm a <strong>Civil Engineering student</strong> with hands-on construction experience through an
+    <strong>L&T Construction internship at TIMS Super Speciality Hospital, LB Nagar</strong>, with practical
+    exposure to planning, quality, execution, finishing, <strong>EHS and MEP coordination</strong>.
+    I also hold a <strong>BCA in Data Science</strong> with <strong>First Class with Distinction (CGPA 9.7/10)</strong>,
+    giving me strong analytical skills in Python, SQL and Power BI.<br><br>
+    With this dual Civil + Data background, I'm <strong>looking for a good opportunity</strong> where I can
+    contribute my skills in construction planning, quality and data analytics, keep learning, and grow with a strong team.
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <h2 class="section-title">Edu<span>cation</span></h2>
+  <p class="section-sub">My academic background</p>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <h4>BCA — Data Science 🏅</h4>
+      <p>SRM Institute of Science and Technology — Directorate of Online Education</p>
+      <p class="years">2023 – 2026 &nbsp;|&nbsp; Completed 2026</p>
+      <span class="edu-badge">🎓 CGPA 9.7/10 — First Class with Distinction</span>
+    </div>
+    <div class="edu-card">
+      <h4>B.Tech — Civil Engineering</h4>
+      <p>Pragati Engineering College (Autonomous), JNTUK</p>
+      <p class="years">2023 – 2027 &nbsp;|&nbsp; CGPA: 7.95/10 (Expected May 2027)</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2 class="section-title">Skills & <span>Expertise</span></h2>
+  <p class="section-sub">A toolkit built across Civil Engineering & Data Science</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3><span class="icon">🏗️</span>Civil & Construction</h3>
+      <ul>
+        <li>Site Execution</li>
+        <li>Quality Control</li>
+        <li>EHS (Environment, Health & Safety)</li>
+        <li>Rebar / Reinforcement Works</li>
+        <li>Finishing Works</li>
+        <li>MEP Coordination</li>
+        <li>Material Testing</li>
+        <li>AutoCAD & ETABS</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3><span class="icon">📋</span>Planning & Management</h3>
+      <ul>
+        <li>Construction Planning</li>
+        <li>Primavera P6</li>
+        <li>Progress Monitoring</li>
+        <li>BOQ & Quantity Takeoff</li>
+        <li>Project Coordination</li>
+        <li>Problem Solving</li>
+        <li>Teamwork & Leadership</li>
+        <li>Time Management</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3><span class="icon">📊</span>Data & Analytics</h3>
+      <ul>
+        <li>Python</li>
+        <li>SQL</li>
+        <li>Power BI</li>
+        <li>Tableau</li>
+        <li>Excel</li>
+        <li>Pandas</li>
+        <li>Data Visualization</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <h3><span class="icon">🛠️</span>Tools & Platforms</h3>
+      <ul>
+        <li>MS Office (Word, Excel, PowerPoint)</li>
+        <li>Jupyter Notebook</li>
+        <li>Git & GitHub</li>
+        <li>VS Code</li>
+        <li>Communication Skills</li>
+        <li>Analytical Thinking</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h2 class="section-title">Work <span>Experience</span></h2>
+  <p class="section-sub">Building expertise through hands-on experience</p>
+  <div class="exp-card">
+    <span class="exp-date">📅 May 2026 – Jul 2026</span>
+    <h3>Civil Engineering Intern</h3>
+    <p class="company">L&T Construction — TIMS Super Speciality Hospital Project, LB Nagar</p>
+    <ul>
+      <li>Gained practical exposure to construction execution, quality control, EHS, finishing and construction planning at a major building project.</li>
+      <li>Worked across Planning, Execution, Quality, Finishing, <strong>Rebar</strong>, MEP, P&M, IR & Stores functions.</li>
+      <li>Observed construction activities including reinforcement, concrete works, masonry, finishing and MEP coordination.</li>
+      <li>Gained exposure to site coordination, progress monitoring, quality inspections, material testing and construction procedures.</li>
+      <li>Developed understanding of construction sequencing, site safety practices and coordination between project functions.</li>
+      <li>Compiled sample-level site data into records used for a self-built quality-tracking dashboard.</li>
+      <li>Built the <strong>Construction Quality Analytics Dashboard (Power BI)</strong> analyzing 27 aggregate/mechanical and 11 volumetric test records, tracking KPIs (specific gravity, water absorption, bulk density, crushing/impact values) with Year, Material, and Location filters.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2 class="section-title">My <span>Projects</span></h2>
+  <p class="section-sub">Where I apply my Civil + Data skills</p>
+  <div class="proj-grid">
+
+    <div class="proj-card">
+      <span class="proj-tag">Primavera P6</span>
+      <h4>G+10 Building Construction Planning & Scheduling</h4>
+      <p class="desc">Developed a detailed Primavera P6 construction schedule for a G+10 building project — created WBS, activities, durations, calendars, milestones and activity relationships, planned sequencing across substructure, superstructure, masonry, finishing, MEP and external works, and analyzed project duration, critical activities and float.</p>
+      <div class="proj-skills"><span>Primavera P6</span><span>WBS</span><span>Scheduling</span></div>
+      <a class="proj-link" href="https://github.com/SionRani/GT10BLDG-P6-Schedule" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-tag">Power BI</span>
+      <h4>Construction Quality Analytics Dashboard</h4>
+      <p class="desc">Developed a Power BI dashboard for analyzing construction material testing and quality-control data — created KPI cards, slicers and visualizations to monitor quality performance and identify deviations, supporting data-driven quality monitoring and reporting.</p>
+      <div class="proj-skills"><span>Power BI</span><span>KPI Cards</span><span>Quality Analytics</span></div>
+      <a class="proj-link" href="https://github.com/SionRani/construction-quality-analytics-dashboard" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-tag">Python</span>
+      <h4>House Price Prediction — Regression Analysis</h4>
+      <p class="desc">Built a regression model in Python on 1,500+ rows across 10+ features, achieving a 92% R² score. Cleaned, transformed, and published results to GitHub.</p>
+      <div class="proj-skills"><span>Python</span><span>Regression</span><span>ML</span></div>
+      <a class="proj-link" href="https://github.com/SionRani/HOUSE-PRICE-PREDICTION-PROJECT" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-tag">Data Analysis</span>
+      <h4>Rainfall Data Analysis — Power BI / Python</h4>
+      <p class="desc">Analyzed historical rainfall data using Python and visualization techniques to identify seasonal patterns and trends, and developed visual reports to support civil engineering and environmental analysis.</p>
+      <div class="proj-skills"><span>Python</span><span>Power BI</span><span>Visualization</span></div>
+      <a class="proj-link" href="https://github.com/SionRani/Rainfall-Analysis" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-tag">NLP</span>
+      <h4>Email Spam Detection</h4>
+      <p class="desc">Developed an intelligent NLP-based classification system leveraging natural language processing techniques to accurately identify and filter spam emails with high precision.</p>
+      <div class="proj-skills"><span>Python</span><span>NLP</span><span>TensorFlow</span><span>NLTK</span></div>
+      <a class="proj-link" href="https://github.com/SionRani/Email-Spam-Detection" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-tag">Healthcare</span>
+      <h4>Heart Disease Prediction</h4>
+      <p class="desc">Created a predictive healthcare analytics model using machine learning to assess cardiovascular disease risk factors and enable early detection for better patient outcomes.</p>
+      <div class="proj-skills"><span>Python</span><span>ML</span><span>Healthcare Analytics</span></div>
+      <a class="proj-link" href="https://github.com/SionRani/Heart-Disease-Prediction" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-tag">Data Analysis</span>
+      <h4>Titanic EDA</h4>
+      <p class="desc">Performed comprehensive exploratory data analysis on the Titanic dataset, uncovering survival patterns and demographic insights through statistical analysis and visualization.</p>
+      <div class="proj-skills"><span>Python</span><span>Pandas</span><span>Matplotlib</span><span>Seaborn</span></div>
+      <a class="proj-link" href="https://github.com/SionRani" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-tag">Visualization</span>
+      <h4>Sales Dashboard</h4>
+      <p class="desc">Designed an interactive sales performance dashboard providing real-time business intelligence, KPI tracking, and actionable insights for strategic decision-making.</p>
+      <div class="proj-skills"><span>Power BI</span><span>DAX</span><span>Data Modeling</span></div>
+      <a class="proj-link" href="https://github.com/SionRani" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-tag">Analytics</span>
+      <h4>Superstore Sales Analysis</h4>
+      <p class="desc">Analyzed retail sales data to identify revenue trends, customer segments, and product performance, delivering data-driven recommendations for business optimization.</p>
+      <div class="proj-skills"><span>Python</span><span>Data Analysis</span><span>Visualization</span></div>
+      <a class="proj-link" href="https://github.com/SionRani" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-tag">Analytics</span>
+      <h4>HR Data Analytics</h4>
+      <p class="desc">Conducted in-depth workforce analytics exploring employee metrics, attrition patterns, and organizational insights to support data-driven HR strategies.</p>
+      <div class="proj-skills"><span>Python</span><span>Data Analysis</span><span>Visualization</span></div>
+      <a class="proj-link" href="https://github.com/SionRani/HR-DATA-ANALYSIS" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="proj-card">
+      <span class="proj-tag">Visualization</span>
+      <h4>Power BI Dashboards</h4>
+      <p class="desc">Built interactive business intelligence dashboards with dynamic visualizations, custom measures, and drill-through capabilities for comprehensive data storytelling.</p>
+      <div class="proj-skills"><span>Power BI</span><span>DAX</span><span>Data Modeling</span></div>
+      <a class="proj-link" href="https://github.com/SionRani" target="_blank">View on GitHub →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <h2 class="section-title">My <span>Certificates</span></h2>
+  <p class="section-sub">Click any certificate to view it</p>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <span class="cert-tag">Data Analysis</span>
+      <h4>Data Analysis Job Simulation</h4>
+      <p class="issuer">Deloitte</p>
+      <p class="date">2025</p>
+      <a href="https://github.com/SionRani/CERTIFICATIONS/blob/main/deloitte.jpg" target="_blank">View Certificate →</a>
+    </div>
+    <div class="cert-card">
+      <span class="cert-tag">Data Analysis</span>
+      <h4>Data Analysis</h4>
+      <p class="issuer">IBM</p>
+      <p class="date">2025</p>
+      <a href="https://github.com/SionRani/CERTIFICATIONS/blob/main/ibm_data_analysis.png" target="_blank">View Certificate →</a>
+    </div>
+    <div class="cert-card">
+      <span class="cert-tag">Data Analysis</span>
+      <h4>Data Analysis Using Python</h4>
+      <p class="issuer">IBM</p>
+      <p class="date">June 2023</p>
+      <a href="https://github.com/SionRani/CERTIFICATIONS/blob/main/ibm_python_ds.png" target="_blank">View Certificate →</a>
+    </div>
+    <div class="cert-card">
+      <span class="cert-tag">Data Science</span>
+      <h4>Python 101 for Data Science</h4>
+      <p class="issuer">IBM / Cognitive Class</p>
+      <p class="date">June 2023</p>
+      <a href="https://github.com/SionRani/CERTIFICATIONS/blob/main/python_101.png" target="_blank">View Certificate →</a>
+    </div>
+    <div class="cert-card">
+      <span class="cert-tag">Data Visualization</span>
+      <h4>Power BI for Beginners</h4>
+      <p class="issuer">Simplilearn SkillUp</p>
+      <p class="date">January 2025</p>
+      <a href="https://github.com/SionRani/CERTIFICATIONS/blob/main/power_bi.png" target="_blank">View Certificate →</a>
+    </div>
+    <div class="cert-card">
+      <span class="cert-tag">Programming</span>
+      <h4>Learn C (Pro)</h4>
+      <p class="issuer">CodeChef</p>
+      <p class="date">June 2023</p>
+      <a href="https://github.com/SionRani/CERTIFICATIONS/blob/main/codechef_c.png" target="_blank">View Certificate →</a>
+    </div>
+    <div class="cert-card">
+      <span class="cert-tag">Achievement</span>
+      <h4>M.F. Husain International Award & Art Exhibition</h4>
+      <p class="issuer">U.S Art Gallery</p>
+      <p class="date">May 2025</p>
+      <a href="https://github.com/SionRani/CERTIFICATIONS/blob/main/mf_husain.jpg" target="_blank">View Certificate →</a>
+    </div>
+    <div class="cert-card">
+      <span class="cert-tag">Creative Arts</span>
+      <h4>Indian Art Fest – National Art Contest</h4>
+      <p class="issuer">The Indian Art Fest</p>
+      <p class="date">April 2025</p>
+      <a href="https://github.com/SionRani/CERTIFICATIONS/blob/main/indian_art_fest.png" target="_blank">View Certificate →</a>
+    </div>
+    <div class="cert-card">
+      <span class="cert-tag">Achievement</span>
+      <h4>Essay Writing Contest – 1st Prize</h4>
+      <p class="issuer">FIPI Student Chapter, JNTUK</p>
+      <p class="date">2024</p>
+      <a href="https://github.com/SionRani/CERTIFICATIONS/blob/main/essay_writing.jpg" target="_blank">View Certificate →</a>
+    </div>
+  </div>
+</section>
+
+<!-- GET IN TOUCH -->
+<section id="contact">
+  <div class="git-box">
+    <h2>Get In Touch</h2>
+    <p>I'm open to opportunities in construction planning, quality, execution & data science and analytics.<br>Let's connect and build something great together!</p>
+    <div class="git-items">
+      <a href="mailto:kondepudisionrani@gmail.com">✉ kondepudisionrani@gmail.com</a>
+      <a href="tel:+919000770510">📱 +91 90007 70510</a>
+      <a href="https://github.com/SionRani" target="_blank">💻 github.com/SionRani</a>
+      <a href="https://www.linkedin.com/in/sionrani" target="_blank">🔗 linkedin.com/in/sionrani</a>
+      <a href="#">📍 Kakinada, AP — India</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Kondepudi Sion Rani. All rights reserved.</footer>
+
+</body>
+</html>
